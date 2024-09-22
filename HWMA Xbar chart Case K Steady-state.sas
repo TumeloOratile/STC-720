@@ -1,9 +1,9 @@
 proc iml;
 ********************HWMA Xbar chart*******************;
 /**** Steady-State when tau is different from 1******/;
-tau =2;
+tau =100;
 *Number of simulations;
-sim = 20;
+sim = 250;
 rlvec = j(sim,1,.);
 
 *Size of the Phase II sample;
@@ -14,15 +14,15 @@ lambda = 0.25;
 l1 = 1-lambda;
 
 *Process parameters: Case K i.e. distribution parameters are known;
- mu0 = 0.05;
- sigma0 = 2;
+mu0 = 0.05;
+sigma0 = 2;
 
 *Optimal parameter;
-L=2.5;
+L=2.99;
 
 *Shift: for the IC case, delta0=0 and delta1=0-for the OOC case, vary delta1 from 0.25 to 3 with an increment of 0.25;
 delta0 = 0.00;		
-delta1 = 0.00;		
+delta1 = 0.5;		
 stdev = sigma0;
 
 mean0  = delta0 * (stdev);
@@ -109,9 +109,9 @@ run;
 proc iml;
 ********************SSS-HWMA Xbar chart*******************;
 /**** Steady-State when tau is different from 1******/;
-tau = 2;
+tau = 100;
 *Number of simulations;
-sim = 20;
+sim = 250;
 rlvec = j(sim,1,.);
 trendvec = j(sim,1,.);
 
@@ -127,8 +127,8 @@ l1 = 1-lambda;
  sigma0 = 2;
 
 *Optimal parameter;
-L_1=2.8;
-L_2=2.5;
+L_1=2.99;
+L_2=3.1;
 
 *synthetic chart parameters;
 trend_length = 3;	*no. of points required to confirm trend;
@@ -229,7 +229,3 @@ var arl;
 histogram;
 inset mean std p5 q1 median q3 p95 / format = 10.2;
 run;
-
-
-
-
